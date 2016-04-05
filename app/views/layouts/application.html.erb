@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bet</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <title>Bet</title>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' rel='stylesheet' type='text/css' />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application.js"%>
+    <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+    <header>
+        <%= link_to image_tag("logo.png", alt: "Benchmark Your Bet"), {:controller => '/pages', :action => 'home'}, {:class => 'websiteLogo'} %>
+        
+        <div id="user-greeting">
+            <% if user_signed_in? %>
+            <p><%= hello_greeting() %> <%= current_user.email %>, <br> Not you? <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>.</p>
+            <% else %>
+                <p><%= link_to "Sign In", new_user_session_path, method: :get %></p>
+                <p><%= link_to "Sign Up", new_user_registration_path %></p>
+            <% end %>
+        </div>
+        <ul class="nav">
+            <li><i class="fa fa-home fa-2x"></i> <%= link_to 'Home Page', {:controller => '/pages', :action => 'home'} %></li>
+            <li><i class="fa fa-list-ul fa-2x"></i> <%= link_to 'Main Feed', {:controller => '/questions', :action => 'index'} %></li>
+            <li><i class="fa fa-info-circle fa-2x"></i> <%= link_to 'About', {:controller => '/pages', :action => 'about'} %></li>
+            <% if user_signed_in? %>
+                <li><i class="fa fa-user fa-2x"></i> <%= link_to 'Profile Settings', {:controller => '/pages', :action => 'about'} %></li>
+                <li><i class="fa fa-sign-out fa-2x"></i> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% end %>
+        </ul>
+        
+    </header>
+    <div id="content">
+        <div id="alerts-wrapper">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+        </div>
+        
+        <%= yield %>
+    </div>
+    
 </body>
 </html>

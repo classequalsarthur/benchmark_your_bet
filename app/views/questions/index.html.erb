@@ -1,0 +1,33 @@
+
+<% if !user_signed_in? %>
+    <p>You need to sign in to view questions.</p>
+    <% message = "You need to sign in to view questions" %>
+<% else %>
+    <% message = "Welcome to Benchmark Your Bet, view a question and submit your vote to see all vote answers." %>
+
+    <div class="header">
+        <h1>MAIN FEED</h1>
+        <p><%= message %></p>
+    </div>
+
+    <% @questions.each do |question| %>
+        <%= link_to(question) do %>
+            <div class="question">
+                <h2><%= question.question_text %></h2>
+
+                <% # add total votes  %>
+
+                <% if current_user.try(:admin?) %>
+                    <td><%= link_to 'Show', question %></td>
+                    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+                    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+            </div>
+        <% end %>
+    <% end %>
+
+<% end %>
+<br>
+<% if current_user.try(:admin?) %>
+    <%= link_to 'New Question', new_question_path %>
+<% end %>

@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20160303170106_add_answer_counter_cache_to_options.rb
