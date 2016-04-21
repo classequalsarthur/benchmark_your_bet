@@ -1,6 +1,9 @@
 <div class="hasVoted">
-    <p>You haven't voted yet</p>
-    <p>You've voted!</p>
+    <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
+        <p>You've voted!</p>
+    <% else %>
+        <p>You haven't voted yet, Vote for an option to see the results!</p>
+    <% end %>
 </div>
 
 <div class="header">
@@ -9,8 +12,12 @@
 
 <% @question.options.each_with_index do |option, index| %>
     <p><%= option.option_text %></p>
-    <p><%= pluralize(option.answers.count, "vote") %><br><br></p>
-    <p><%= button_to '+1', question_option_upvote_path(@question, option), method: :post %></p>
+
+    <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
+        <p><%= pluralize(option.answers.count, "vote") %></p>
+    <% else %>
+    <p><%= button_to 'Vote', question_option_upvote_path(@question, option), method: :post %></p><br><br>
+    <% end %>
 <% end %>
 
 <% if current_user.admin? %>

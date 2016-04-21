@@ -15,13 +15,12 @@ html, body{
 //    overflow: hidden;
 }
 header{
-    position: relative;
+    position: fixed;
     background-color: $lightBlue;
     color: $lightGrey;
     width: 23%;
     padding: 1%;
     height: 98%;
-    float: left;
     
     img{
         display: block;
@@ -87,10 +86,12 @@ header{
     }
 }
 #content{
-    height: 96%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: auto;
     width: 71%;
     padding: 2%;
-    float: right;
 }
 a{
     color: black;
