@@ -14,7 +14,7 @@
         <%= link_to(question) do %>
             <div class="question">
                 <h2><%= question.question_text %></h2>
-
+                
                 <% # add total votes  %>
 
                 <% if current_user.try(:admin?) %>

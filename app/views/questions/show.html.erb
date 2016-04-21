@@ -1,7 +1,6 @@
 <div class="hasVoted">
     <p>You haven't voted yet</p>
     <p>You've voted!</p>
-    <% # check DB to see if current user and this question (answers table) and display this message %>
 </div>
 
 <div class="header">
@@ -10,6 +9,8 @@
 
 <% @question.options.each_with_index do |option, index| %>
     <p><%= option.option_text %></p>
+    <p><%= pluralize(option.answers.count, "vote") %><br><br></p>
+    <p><%= button_to '+1', question_option_upvote_path(@question, option), method: :post %></p>
 <% end %>
 
 <% if current_user.admin? %>
