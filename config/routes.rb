@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     get 'pages/about'
 
+    get 'pages/profile'
+
     devise_for :users
 
     resources :questions do

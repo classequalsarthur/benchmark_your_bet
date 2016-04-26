@@ -12,11 +12,16 @@
 
 <% @question.options.each_with_index do |option, index| %>
     <p><%= option.option_text %></p>
-
-    <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
+    
+    <% if current_user.admin? %>
         <p><%= pluralize(option.answers.count, "vote") %></p>
+        <p><%= button_to 'Vote', question_option_upvote_path(@question, option), method: :post %></p><br><br>
     <% else %>
-    <p><%= button_to 'Vote', question_option_upvote_path(@question, option), method: :post %></p><br><br>
+        <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
+            <p><%= pluralize(option.answers.count, "vote") %></p>
+        <% else %>
+            <p><%= button_to 'Vote', question_option_upvote_path(@question, option), method: :post %></p><br><br>
+        <% end %>
     <% end %>
 <% end %>
 

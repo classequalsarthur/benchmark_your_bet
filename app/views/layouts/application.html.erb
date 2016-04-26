@@ -26,7 +26,7 @@
             <li><i class="fa fa-list-ul fa-2x"></i> <%= link_to 'Main Feed', {:controller => '/questions', :action => 'index'} %></li>
             <li><i class="fa fa-info-circle fa-2x"></i> <%= link_to 'About', {:controller => '/pages', :action => 'about'} %></li>
             <% if user_signed_in? %>
-                <li><i class="fa fa-user fa-2x"></i> <%= link_to 'Profile Settings', {:controller => '/pages', :action => 'about'} %></li>
+                <li><i class="fa fa-user fa-2x"></i> <%= link_to 'Profile Settings', {:controller => '/pages', :action => 'profile'} %></li>
                 <li><i class="fa fa-sign-out fa-2x"></i> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
             <% end %>
         </ul>
