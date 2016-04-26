@@ -6,28 +6,59 @@
     <% message = "Welcome to Benchmark Your Bet, view a question and submit your vote to see all vote answers." %>
 
     <div class="header">
-        <h1>MAIN FEED</h1>
-        <p><%= message %></p>
+        <h1 class="title"><div class="bar"></div>MAIN FEED</h1>
+        <h2 class="headerMessage"><%= message %></h2>
     </div>
 
-    <% @questions.each do |question| %>
-        <%= link_to(question) do %>
+    <div class="body">
+        <% @questions.order("fixture_date asc").each do |question| %>
             <div class="question">
-                <h2><%= question.question_text %></h2>
-                
-                <% # add total votes  %>
+                <div class="questionMeta">
+                    <h3><%= question.category %></h3>
+                    <p><%= question.fixture_date %></p>
+                </div>
+                <div class="questionText">
+                    <p><%= question.question_text %></p>
+                </div>
+                <div class="time"><p>
+                    <%=
+                        var = (question.fixture_date - DateTime.now).to_i 
 
+                        t = var
+                        mm, ss = t.divmod(60)            #=> [4515, 21]
+                        hh, mm = mm.divmod(60)           #=> [75, 15]
+                        dd, hh = hh.divmod(24)           #=> [3, 3]
+                        
+                        # report = "%d days, %d hours, %d minutes, %d seconds" % [dd, hh, mm, ss]
+
+                        if dd > 0
+                            report = "%d Days left" % [dd]
+                        elsif dd == 0 && hh > 0
+                            report = "%d Hours left" % [hh]
+                        elsif dd == 0 && hh == 0
+                            report = "%d Minutes left" % [mm]
+                        end
+                        report
+                        
+                    %></p>
+                </div>
+                <%= link_to 'Vote Now', question, :class => "voteNow" %>
+                
                 <% if current_user.try(:admin?) %>
-                    <td><%= link_to 'Show', question %></td>
-                    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-                    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <div class="adminButtons">
+                        <%= link_to 'Show', question %>
+                        <%= link_to 'Edit', edit_question_path(question) %>
+                        <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </div>
                 <% end %>
             </div>
-        <% end %>
     <% end %>
-
+    </div>
 <% end %>
-<br>
+        
 <% if current_user.try(:admin?) %>
-    <%= link_to 'New Question', new_question_path %>
+    <div id="admin-panel">
+        <%= link_to 'New Question', new_question_path %>
+    </div>
 <% end %>
+        

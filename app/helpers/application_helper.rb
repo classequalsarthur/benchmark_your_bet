@@ -1,14 +1,16 @@
 module ApplicationHelper
     
+    def time_left()
+        t = (question.fixture_date - DateTime.now).to_i
+        
+        t = math
+        mm, ss = t.divmod(60)            #=> [4515, 21]
+        hh, mm = mm.divmod(60)           #=> [75, 15]
+        dd, hh = hh.divmod(24)           #=> [3, 3]
+        "%d days, %d hours, %d minutes and %d seconds" % [dd, hh, mm, ss]
+    end
+    
     def get_season()
-#        year
-#        day
-#        wday 0-6
-#        yday 0 365
-#        hour 24
-#        min 59
-#        sec 59
-#        zone
         
         time = Time.new
         
@@ -33,6 +35,16 @@ module ApplicationHelper
         elsif(time.hour >= 17) && (time.hour <= 24)
             "Good evening, "
         end
+    end
+    
+    def random_fact()
+        opening = ["Fact number one.",
+            "Fact number two.",
+            "Fact number three.",
+            "Fact number four.",
+            "Fact number five."]
+        
+        "#{opening[rand(5)]}"
     end
     
     def get_random_number(max_value = 10)

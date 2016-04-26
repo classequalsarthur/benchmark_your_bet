@@ -1,43 +1,52 @@
-<div class="hasVoted">
-    <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
-        <p>You've voted!</p>
-    <% else %>
-        <p>You haven't voted yet, Vote for an option to see the results!</p>
-    <% end %>
-</div>
+
 
 <div class="header">
-    <h1><%= @question.question_text %></h1>
+    <h1 class="qTitle"><div class="bar"></div><%= @question.question_text %></h1>
+</div>
+<div class="body">
+    <div class="hasVoted">
+        <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
+            <p class="yesVote">You've voted!</p>
+        <% else %>
+            <p class="noVote">You haven't voted yet, Vote for an option to see the results!</p>
+        <% end %>
+    </div>
+    <div id="options-wrapper">
+    <% @question.options.each_with_index do |option, index| %>
+
+        <div class="option">
+            <p class="optionText"><%= option.option_text %></p>
+            
+            <% if current_user.admin? %>
+                <p class="optionCount"><%= pluralize(option.answers.count, "vote") %></p>
+                <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'optionVote', method: :post %>
+            <% else %>
+                <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
+                    <p class="optionCount"><%= pluralize(option.answers.count, "vote") %></p>
+                <% else %>
+                <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'optionVote', method: :post %>
+                <% end %>
+            <% end %>
+        </div>
+    <% end %>
+        <div class="voteTimerBar"><p class="voteTimer"></p></div>
+    </div>
 </div>
 
-<% @question.options.each_with_index do |option, index| %>
-    <p><%= option.option_text %></p>
-    
-    <% if current_user.admin? %>
-        <p><%= pluralize(option.answers.count, "vote") %></p>
-        <p><%= button_to 'Vote', question_option_upvote_path(@question, option), method: :post %></p><br><br>
-    <% else %>
-        <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
-            <p><%= pluralize(option.answers.count, "vote") %></p>
-        <% else %>
-            <p><%= button_to 'Vote', question_option_upvote_path(@question, option), method: :post %></p><br><br>
-        <% end %>
-    <% end %>
-<% end %>
-
 <% if current_user.admin? %>
-    <h2>Add Option</h2>
-    <%= form_for([@question, @question.options.build]) do |f| %>
-    <p>
-        <%= f.label :option_text %><br />
-        <%= f.text_field :option_text %>
-    </p>
-    <p>
-        <%= f.submit %>
-    </p>
-    <% end %>
+    <div id="admin-panel">
+        <h2>Add Option</h2>
+        <%= form_for([@question, @question.options.build]) do |f| %>
+        <p>
+            <%= f.label :option_text %><br />
+            <%= f.text_field :option_text %>
+        </p>
+        <p>
+            <%= f.submit %>
+        </p>
+        <% end %>
 
-    <%= link_to 'Edit', edit_question_path(@question) %> |
-    <%= link_to 'Back', questions_path %>
-
+        <%= link_to 'Edit', edit_question_path(@question) %> |
+        <%= link_to 'Back', questions_path %>
+    </div>
 <% end %>

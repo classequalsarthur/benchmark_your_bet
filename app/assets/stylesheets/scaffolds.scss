@@ -1,23 +1,60 @@
+/* COLOURS */
 
-$darkBlue: #434b53;
-$lightBlue: #566478;
-$lightRed: #fb6b5c;
-$darkRed: #fb5757;
-$lightGrey: #e2e7ec;
+// Dark Neutral
+$darkGrey: #211e1f;
+$black: #040707;
+
+// Light Neutral
+$lightGrey: #e9ded7;
+$white: #ffffff;
+
+// Reds
+$redDark: #4d2128;
+$redMid: #612e33;
+$redLight: #98353f;
+
+// Greens
+$greenDark: #264326;
+$greenMid: #315331;
+$greenLight: #74ae5c;
 
 
+/* FONTS */
+$font: 'Montserrat';
+$fontBold: 700;
+$fontLight: 300;
+
+
+/* MISC */
+$trans: all 0.3s;
+
+
+
+
+/*
+
+    CSS BY ARTHUR RIGLEY
+    OWNER, CREATOR AND DEVELOPER OF BENCHMARK YOUR BET
+
+    1.0 STRUCTURE
+    2.0 TEXT
+    3.0 MISC
+
+*/
+
+/* 1.0 STRUCTURE */
 html, body{
     padding: 0;
     margin: 0;
-    font-family: helvetica;
+    font-family: $font;
     font-size: 13px;
     height: 100%;
 //    overflow: hidden;
 }
-header{
+#left{
     position: fixed;
-    background-color: $lightBlue;
-    color: $lightGrey;
+    background-color: $redDark;
+    color: $white;
     width: 23%;
     padding: 1%;
     height: 98%;
@@ -25,7 +62,7 @@ header{
     img{
         display: block;
         width: 100%;
-        max-width: 100px;
+        max-width: 250px;
         margin: auto;
         margin-bottom: 20px;
     }
@@ -33,10 +70,10 @@ header{
         text-align: center;
         
         a{
-            color: $lightGrey;
+            color: $white;
 
             &:hover{
-                color: $lightRed;
+                color: $greenLight;
             }
         }
     }
@@ -46,44 +83,197 @@ header{
         padding: 15px 0;
         margin: 30px 0 0;
         text-align: center;
-        border-top: 2px solid $lightRed;
-        border-bottom: 2px solid $lightRed;
+        border-top: 4px solid $redLight;
+        border-bottom: 4px solid $redLight;
 
         li{
+            font-weight: $fontLight;
             list-style: none;
             display: block;
             font-size: 13px;
-            border-bottom: 1px solid $lightGrey;
+            border-bottom: 1px solid $redLight;
             padding: 0 30px;
             text-align: left;
-            transition: all 0.3s;
-            -webkit-transition: all 0.3s;
-            -moz-transition: all 0.3s;
+            transition: $trans;
+            -webkit-transition: $trans;
+            -moz-transition: $trans;
             
             &:hover{
                 padding: 0 40px;
+                
+                a{
+                    color: $greenLight;
+                }
+                i{
+                    color: $greenLight;
+                }
             }
 
             a{
                 display: block;
                 padding: 15px;
                 text-decoration: none;
-                color: $lightGrey;
-                
-                &:hover{
-                    color: $lightRed;
-                }
+                color: $white;
             }
             i{
                 float: left;
                 margin-top: 10px;
                 margin-right: 20px;
+                transition: $trans;
+                -webkit-transition: $trans;
+                -moz-transition: $trans;
             }
             &:last-child{
                 border-bottom: none;
             }
         }
     }
+}
+.header{
+    float: left;
+    width: 90%;
+    padding: 20px 5% ;
+    border-bottom: 1px solid $redLight;
+
+    .title{
+        position: relative;
+        float: left;
+        width: 35%;
+    }
+    .qTitle{
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    .bar{
+        position: absolute;
+        top: 0;
+        left: 20px;
+        width: 150px;
+        height: 4px;
+        background-color: $redLight;
+    }
+    .headerMessage{
+        float: left;
+        width: 65%;
+        padding-top: 20px;
+    }
+}
+.body{
+    float: left;
+    width: 90%;
+    padding: 40px 5%;
+    
+    .question{
+        position: relative;
+        float: left;
+        width: 19%;
+        min-height: 200px;
+        padding: 2%;
+        margin: 1%;
+        background-color: $redMid;
+        border-top: 3px solid $redLight;
+        text-align: center;
+        
+        h3,p{
+            color: $white;
+            text-align: center;
+        }
+        .questionMeta{
+            
+        }
+        .questionText{
+            padding: 15px 0;
+            margin: 15px 0;
+            border-top: 1px solid $white;
+            border-bottom: 1px solid $white;
+        }
+        .voteNow{
+            float: left;
+            width: 80%;
+            font-size: 16px;
+            border: 2px solid $white;
+            color: $white;
+            margin: 30px 5% 0;
+            padding: 5px 5%;
+            
+            &:hover{
+                border-color: $greenLight;
+                color: $greenLight;
+            }
+        }
+    }
+    .hasVoted{
+        p{
+            width: 90%;
+            padding: 20px 5%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .noVote{
+            background-color: $redLight;
+            color: $white;
+        }
+        .yesVote{
+            background-color: $greenLight;
+            color: $white;
+        }
+    }
+    #options-wrapper{
+        width: 50%;
+        
+        .option{
+            position: relative;
+            float: left;
+            width: 92%;
+            padding: 4%;
+            background-color: $redDark;
+            margin-bottom: 70px;
+            
+            .optionText{
+                float: left;
+                color: $white;
+            }
+            .optionCount{
+                float: right;
+                color: $white;
+            }
+            // button
+            .optionVote{
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 200px;
+                padding: 10px 0;
+                background-color: $greenLight;
+                color: $white;
+                text-align: center;
+                transition: $trans;
+                -webkit-transition: $trans;
+                -moz-transition: $trans;
+                
+                &:hover{
+                    background-color: $greenMid;
+                }
+            }
+        }   
+        .voteTimerBar{
+            float: left;
+            width: 100%;
+            background: $greenLight;
+            
+            .voteTimer{
+                float: left;
+                width: 94%;
+                padding: 0 3%;
+                font-size: 26px;
+                text-align: right;
+                font-weight: $fontBold;
+                color: white;
+            }
+        }
+    }
+    
 }
 #content{
     position: absolute;
@@ -93,20 +283,47 @@ header{
     width: 71%;
     padding: 2%;
 }
+/* 2.0 TEXT */
+h1,h2,h3,h4,p{
+    margin: 0;
+}
+h1{
+    padding-top: 20px;
+    font-size: 42px;
+    font: $font;
+    font-weight: $fontBold;
+}
+h2{
+    font-size: 16px;
+    font: $font;
+    font-weight: $fontLight;
+}
+h3{
+    font-size: 20px;
+    font: $font;
+    font-weight: $fontBold;
+}
+p{
+    font-size: 14px;
+    font-weight: $fontLight;
+}
 a{
-    color: black;
-    transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
+    color: white;
+    transition: $trans;
+    -webkit-transition: $trans;
+    -moz-transition: $trans;
+    text-decoration: none;
 
     &:visited {
-    color: black;
+    color: white;
     }
 
     &:hover {
-    color: red;
+    color: $greenLight;
     }
 }
+
+/* 3.0 MISC */
 
 // Pre scaffold stuff?
 div {
@@ -148,4 +365,29 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+// admin
+#admin-panel{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 90%;
+    background: #00acd0;
+    padding: 10px 5%;
+    text-align: right;
+    
+    a{
+        color: white;
+        
+    }
+}
+.adminButtons{
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
+    background-color: #00acd0;
+    text-align: center;
 }
