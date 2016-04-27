@@ -64,20 +64,34 @@ html, body{
         width: 100%;
         max-width: 250px;
         margin: auto;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
     #user-greeting{
         text-align: center;
         
-        a{
-            color: $white;
+        .signButton{
+            float: left;
+            width: 44%;
+            margin: 0 3%;
+            transition: $trans;
+            -webkit-transition: $trans;
+            -moz-transition: $trans;
+            
+            a{
+                display: block;
+                padding: 10px 0;
+                color: $white;
+                border: 2px solid $white;
 
-            &:hover{
-                color: $greenLight;
+                &:hover{
+                    color: $greenLight;
+                    border-color: $greenLight;
+                }
             }
         }
     }
     .nav{
+        float: left;
         font-size: 0;
         width: 100%;
         padding: 15px 0;
@@ -87,19 +101,21 @@ html, body{
         border-bottom: 4px solid $redLight;
 
         li{
+            width: 90%;
+            float: left;
             font-weight: $fontLight;
             list-style: none;
             display: block;
             font-size: 13px;
             border-bottom: 1px solid $redLight;
-            padding: 0 30px;
+            padding: 0 4%;
             text-align: left;
             transition: $trans;
             -webkit-transition: $trans;
             -moz-transition: $trans;
             
             &:hover{
-                padding: 0 40px;
+                padding: 0 5%;
                 
                 a{
                     color: $greenLight;
@@ -161,8 +177,8 @@ html, body{
 }
 .body{
     float: left;
-    width: 90%;
-    padding: 40px 5%;
+    width: 100%;
+    padding: 20px 0 0;
     
     .question{
         position: relative;
@@ -256,32 +272,128 @@ html, body{
                     background-color: $greenMid;
                 }
             }
-        }   
-        .voteTimerBar{
-            float: left;
-            width: 100%;
-            background: $greenLight;
-            
-            .voteTimer{
-                float: left;
-                width: 94%;
-                padding: 0 3%;
-                font-size: 26px;
-                text-align: right;
-                font-weight: $fontBold;
-                color: white;
-            }
         }
     }
     
+}   
+.voteTimerBar{
+    float: left;
+    width: 100%;
+    background: $greenLight;
+    margin-top: 10px;
+
+    .voteTimer{
+        float: left;
+        width: 94%;
+        padding: 0 3%;
+        font-size: 26px;
+        text-align: right;
+        font-weight: $fontBold;
+        color: white;
+    }
 }
 #content{
-    position: absolute;
-    top: 0;
-    right: 0;
+    float: right;
     height: auto;
     width: 71%;
     padding: 2%;
+}
+.column{
+    float: left;
+    margin-bottom: 20px;
+}
+.one{
+    width: 60%;
+    padding: 0px 10%;
+    margin: 0 10%;
+}
+.two{
+    width: 42%;
+    padding: 0px 2%;
+    margin: 2%;
+}
+.profileSettings{
+    float: left;
+    width: 100%;
+}
+#alerts-wrapper{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+
+    .notice{
+        width: 100%;
+        background-color: $greenLight;
+        color: $white;
+    }
+    .alert{
+        width: 100%;
+        background-color: $redLight;
+        color: $white;
+    }
+}
+.redButton{
+    float: left;
+    width: 80%;
+    font-size: 16px;
+    border: 2px solid $redLight;
+    margin: 30px 5% 0;
+    padding: 5px 5%;
+    color: $redLight!important;
+
+    &:hover{
+        background-color: $redLight;
+        color: $white!important;
+    }
+}
+.greenButton{
+    float: left;
+    width: 80%;
+    margin: 30px 10%;
+    padding: 10px 0;
+    font-size: 16px;
+    background-color: $white;
+    border: 2px solid $greenLight;
+    color: $greenLight;
+    transition: $trans;
+    -webkit-transition: $trans;
+    -moz-transition: $trans;
+
+    &:hover{
+        background-color: $greenLight;
+        color: $white;
+    }
+}
+.field{
+    margin-top: 25px;
+    text-align: center;
+
+    input{
+        background-color: $white;
+        color: $redLight;
+        text-align: center;
+        width: 70%;
+        padding: 10px 5%;
+        border: 2px solid $lightGrey;
+        cursor: pointer;
+        outline: none;
+        margin-top: 5px;
+        transition: $trans;
+        -webkit-transition: $trans;
+        -moz-transition: $trans;
+
+        &:hover{
+            border-color: $greenLight;
+            color: $greenLight;
+        }
+        &:focus{
+            border-color: $greenLight;
+            color: $greenLight;
+        }
+    }
+    input[type='checkbox']{
+        width: 10px!important;
+    }
 }
 /* 2.0 TEXT */
 h1,h2,h3,h4,p{
@@ -302,6 +414,7 @@ h3{
     font-size: 20px;
     font: $font;
     font-weight: $fontBold;
+    text-align: center;
 }
 p{
     font-size: 14px;
@@ -324,6 +437,16 @@ a{
 }
 
 /* 3.0 MISC */
+.linkWhite{
+    color: $redLight!important;
+    
+    &:hover{
+        color: $greenLight!important;
+    }
+}
+.textCenter{
+    text-align: center;
+}
 
 // Pre scaffold stuff?
 div {
@@ -339,11 +462,10 @@ div {
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table;
+  display: inherit;
 }
 
 #error_explanation {
-  width: 450px;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;

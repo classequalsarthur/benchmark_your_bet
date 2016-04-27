@@ -1,9 +1,9 @@
 
 <% if !user_signed_in? %>
     <p>You need to sign in to view questions.</p>
-    <% message = "You need to sign in to view questions" %>
+    <% message = "You need to sign in to view questions. Don't have an account? Sign up for free!" %>
 <% else %>
-    <% message = "Welcome to Benchmark Your Bet, view a question and submit your vote to see all vote answers." %>
+    <% message = random_fact() %>
 
     <div class="header">
         <h1 class="title"><div class="bar"></div>MAIN FEED</h1>
