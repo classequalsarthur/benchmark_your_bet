@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: bet_production
-  username: bet
+  username: bet_admin
   password: <%= ENV['BET_DATABASE_PASSWORD'] %>
