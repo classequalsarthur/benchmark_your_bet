@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9204f07f-90e6-495f-afad-873608e22732" name="benchmark-your-bet" url="http://139.59.167.24">
+        <fileTransfer host="139.59.167.24" port="22" rootFolder="/home/rails/rails_project" accessType="SFTP" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
