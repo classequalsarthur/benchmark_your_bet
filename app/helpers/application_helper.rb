@@ -38,11 +38,11 @@ module ApplicationHelper
     end
     
     def random_fact()
-        opening = ["Fact number one.",
-            "Fact number two.",
-            "Fact number three.",
-            "Fact number four.",
-            "Fact number five."]
+        opening = ["The Wisdom of the Crowd is a theory which claims all the answers added together, divided by the total number of answers can be very close to the correct answer.",
+            "What kind of bet are you looking at today? Football? Rugby? Horse-racing?",
+            "Some people consider an alligator's tooth to bring them luck with gambling!",
+            "Thanks for using Benchmark Your Bet!" ,
+            "The more people who vote on an answer, the stronger the collective opinion will be. Share it around to everyone you know!"]
         
         "#{opening[rand(5)]}"
     end

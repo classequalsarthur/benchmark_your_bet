@@ -47,6 +47,7 @@ html, body{
     padding: 0;
     margin: 0;
     font-family: $font;
+    font-weight: $fontLight;
     font-size: 13px;
     height: 100%;
 //    overflow: hidden;
@@ -148,7 +149,7 @@ html, body{
 .header{
     float: left;
     width: 90%;
-    padding: 20px 5% ;
+    padding: 20px 5% 0;
     border-bottom: 1px solid $redLight;
 
     .title{
@@ -178,15 +179,20 @@ html, body{
 .body{
     float: left;
     width: 100%;
-    padding: 20px 0 0;
+    padding: 20px 0 40px;
+    
+    .row{
+        float: left;
+        width: 100%;
+    }
     
     .question{
         position: relative;
         float: left;
-        width: 19%;
+        width: 25.33%;
         min-height: 200px;
         padding: 2%;
-        margin: 1%;
+        margin: 2%;
         background-color: $redMid;
         border-top: 3px solid $redLight;
         text-align: center;
@@ -203,20 +209,6 @@ html, body{
             margin: 15px 0;
             border-top: 1px solid $white;
             border-bottom: 1px solid $white;
-        }
-        .voteNow{
-            float: left;
-            width: 80%;
-            font-size: 16px;
-            border: 2px solid $white;
-            color: $white;
-            margin: 30px 5% 0;
-            padding: 5px 5%;
-            
-            &:hover{
-                border-color: $greenLight;
-                color: $greenLight;
-            }
         }
     }
     .hasVoted{
@@ -236,6 +228,7 @@ html, body{
         }
     }
     #options-wrapper{
+        float: left;
         width: 50%;
         
         .option{
@@ -243,44 +236,64 @@ html, body{
             float: left;
             width: 92%;
             padding: 4%;
+            margin-bottom: 20px;
             background-color: $redDark;
-            margin-bottom: 70px;
             
             .optionText{
                 float: left;
+                width: 80%;
                 color: $white;
+                margin-top: 0;
             }
             .optionCount{
                 float: right;
                 color: $white;
+                width: 20%;
+                margin-top: 0;
             }
-            // button
-            .optionVote{
-                position: absolute;
-                top: 100%;
-                right: 0;
-                width: 200px;
+            // signify which option user voted for
+            .votedFor{
+                float: left;
+                width: 100%;
                 padding: 10px 0;
                 background-color: $greenLight;
                 color: $white;
                 text-align: center;
-                transition: $trans;
-                -webkit-transition: $trans;
-                -moz-transition: $trans;
                 
-                &:hover{
-                    background-color: $greenMid;
+                i{
+                    
                 }
             }
         }
     }
+    #options-info-wrapper{
+        float: right;
+        width: 50%;
+    }
     
-}   
+}
+// button
+.voteNow{
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    background-color: $greenLight;
+    color: $white;
+    text-align: center;
+
+    &:hover{
+        background-color: $greenMid;
+        color: $white;
+    }
+}
 .voteTimerBar{
     float: left;
     width: 100%;
     background: $greenLight;
     margin-top: 10px;
+    p{
+        margin: 0;
+    }
 
     .voteTimer{
         float: left;
@@ -296,7 +309,7 @@ html, body{
     float: right;
     height: auto;
     width: 71%;
-    padding: 2%;
+    padding: 0 2%;
 }
 .column{
     float: left;
@@ -304,12 +317,12 @@ html, body{
 }
 .one{
     width: 60%;
-    padding: 0px 10%;
+    padding: 20px 10%;
     margin: 0 10%;
 }
 .two{
     width: 42%;
-    padding: 0px 2%;
+    padding: 20px 2%;
     margin: 2%;
 }
 .profileSettings{
@@ -317,9 +330,9 @@ html, body{
     width: 100%;
 }
 #alerts-wrapper{
-    width: 100%;
+    width: 110%;
+    margin-left: -5%;
     text-align: center;
-    padding: 10px 0;
 
     .notice{
         width: 100%;
@@ -368,7 +381,7 @@ html, body{
     margin-top: 25px;
     text-align: center;
 
-    input{
+    input,textarea{
         background-color: $white;
         color: $redLight;
         text-align: center;
@@ -397,7 +410,7 @@ html, body{
 }
 /* 2.0 TEXT */
 h1,h2,h3,h4,p{
-    margin: 0;
+    
 }
 h1{
     padding-top: 20px;
@@ -409,6 +422,7 @@ h2{
     font-size: 16px;
     font: $font;
     font-weight: $fontLight;
+    line-height: 1.5;
 }
 h3{
     font-size: 20px;
@@ -419,6 +433,7 @@ h3{
 p{
     font-size: 14px;
     font-weight: $fontLight;
+    line-height: 1.5;
 }
 a{
     color: white;
@@ -439,6 +454,9 @@ a{
 /* 3.0 MISC */
 .linkWhite{
     color: $redLight!important;
+    transition: $trans;
+    -webkit-transition: $trans;
+    -moz-transition: $trans;
     
     &:hover{
         color: $greenLight!important;
@@ -447,7 +465,9 @@ a{
 .textCenter{
     text-align: center;
 }
-
+.vaM{
+    vertical-align: middle;
+}
 // Pre scaffold stuff?
 div {
   &.field, &.actions {
@@ -491,13 +511,12 @@ div {
 
 // admin
 #admin-panel{
-    position: fixed;
-    bottom: 0;
-    right: 0;
+    float: left;
     width: 90%;
     background: #00acd0;
     padding: 10px 5%;
-    text-align: right;
+    margin: 50px 0;
+    clear: both;
     
     a{
         color: white;

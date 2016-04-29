@@ -1,58 +1,74 @@
 
-<% if !user_signed_in? %>
-    <p>You need to sign in to view questions.</p>
-    <% message = "You need to sign in to view questions. Don't have an account? Sign up for free!" %>
-<% else %>
-    <% message = random_fact() %>
+<div class="header">
+    <h1 class="title"><div class="bar"></div>MAIN FEED</h1>
+    <h2 class="headerMessage"><%= random_fact() %></h2>
+</div>
 
-    <div class="header">
-        <h1 class="title"><div class="bar"></div>MAIN FEED</h1>
-        <h2 class="headerMessage"><%= message %></h2>
+<% if !user_signed_in? %>
+    <div class="body">
+        <div class="column one textCenter"><br>
+            <h3>To view the bets you need to be a registered user!</h3><br>
+            <p><%= link_to "Already have an account? Log in here!", new_user_session_path, :class => 'linkWhite' %></p>
+            <p><%= link_to "Don't have an account? Sign up for free!", new_user_registration_path, :class => 'linkWhite' %></p>
+        </div>
     </div>
+<% else %>
 
     <div class="body">
-        <% @questions.order("fixture_date asc").each do |question| %>
-            <div class="question">
-                <div class="questionMeta">
-                    <h3><%= question.category %></h3>
-                    <p><%= question.fixture_date %></p>
-                </div>
-                <div class="questionText">
-                    <p><%= question.question_text %></p>
-                </div>
-                <div class="time"><p>
-                    <%=
-                        var = (question.fixture_date - DateTime.now).to_i 
+        <% @questions.order("fixture_date asc").in_groups_of(3, false).each do |group| %>
+            <div class="row">
+                <% group.each do |question| %>
+                    <div class="question">
+                        <div class="questionMeta">
+                            <h3><%= question.category %></h3>
+                            <p><% fd = question.fixture_date %>
+                                <%= fd.strftime('%A, %d %B %Y - %H:%M:%S') %>
 
-                        t = var
-                        mm, ss = t.divmod(60)            #=> [4515, 21]
-                        hh, mm = mm.divmod(60)           #=> [75, 15]
-                        dd, hh = hh.divmod(24)           #=> [3, 3]
-                        
-                        # report = "%d days, %d hours, %d minutes, %d seconds" % [dd, hh, mm, ss]
+                            </p>
+                        </div>
+                        <div class="questionText">
+                            <p><%= question.question_text %></p>
+                        </div>
+                        <div class="time">
+                            <p>
+                            <%=
+                                var = (question.fixture_date - DateTime.now).to_i 
 
-                        if dd > 0
-                            report = "%d Days left" % [dd]
-                        elsif dd == 0 && hh > 0
-                            report = "%d Hours left" % [hh]
-                        elsif dd == 0 && hh == 0
-                            report = "%d Minutes left" % [mm]
-                        end
-                        report
-                        
-                    %></p>
-                </div>
-                <%= link_to 'Vote Now', question, :class => "voteNow" %>
-                
-                <% if current_user.try(:admin?) %>
-                    <div class="adminButtons">
-                        <%= link_to 'Show', question %>
-                        <%= link_to 'Edit', edit_question_path(question) %>
-                        <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                t = var
+                                mm, ss = t.divmod(60)            #=> [4515, 21]
+                                hh, mm = mm.divmod(60)           #=> [75, 15]
+                                dd, hh = hh.divmod(24)           #=> [3, 3]
+
+                                # report = "%d days, %d hours, %d minutes, %d seconds" % [dd, hh, mm, ss]
+
+                                if dd > 0
+                                    report = "%d days remaining" % [dd]
+                                elsif dd <= 0 && hh > 0
+                                    report = "%d hours, %d minutes remaining" % [hh, mm]
+                                elsif dd <= 0 && hh <= 0 && mm > 0
+                                    report = "%d minutes remaining" % [mm]
+                                elsif dd <= 0 && hh <= 0 && mm <= 0 && ss > 20
+                                    report = "Less than 1 minute remaining!"
+                                elsif dd <= 0 && hh <= 0 && mm <= 0
+                                    report = "Fixture has started"
+                                end
+                                report
+                            %>
+                            </p>
+                        </div><br>
+                        <%= link_to 'Vote Now', question, :class => 'voteNow' %>
+
+                        <% if current_user.try(:admin?) %>
+                            <div class="adminButtons">
+                                <%= link_to 'Show', question %>
+                                 • <%= link_to 'Edit', edit_question_path(question) %> • 
+                                <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </div>
+                        <% end %>
                     </div>
                 <% end %>
             </div>
-    <% end %>
+        <% end %>
     </div>
 <% end %>
         

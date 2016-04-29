@@ -16,37 +16,42 @@
 
         <div class="option">
             <p class="optionText"><%= option.option_text %></p>
-            
             <% if current_user.admin? %>
-                <p class="optionCount"><%= pluralize(option.answers.count, "vote") %></p>
-                <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'optionVote', method: :post %>
+                    <h3 class="optionCount"><%= option.answers.count %></h3>
+                    <% if Answer.where(:user_id => current_user.id, :option_id => option.id).present? %>
+                        <div class="votedFor"><i class="fa fa-check fa-1x"></i> Your Vote</div>
+                    <% else %>
+                        <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'voteNow', method: :post %>
+                    <% end %>
             <% else %>
                 <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
-                    <p class="optionCount"><%= pluralize(option.answers.count, "vote") %></p>
+                    <h3 class="optionCount"><%= option.answers.count %></h3>
+                    <% if Answer.where(:user_id => current_user.id, :option_id => option.id).present? %>
+                        <div class="votedFor"><i class="fa fa-check fa-1x"></i> Your Vote</div>
+                    <% end %>
                 <% else %>
-                <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'optionVote', method: :post %>
+                    <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'voteNow', method: :post %>
                 <% end %>
             <% end %>
         </div>
     <% end %>
         <div class="voteTimerBar"><p class="voteTimer"></p></div>
     </div>
-</div>
-
-<% if current_user.admin? %>
-    <div id="admin-panel">
-        <h2>Add Option</h2>
-        <%= form_for([@question, @question.options.build]) do |f| %>
-        <p>
-            <%= f.label :option_text %><br />
-            <%= f.text_field :option_text %>
-        </p>
-        <p>
-            <%= f.submit %>
-        </p>
-        <% end %>
-
-        <%= link_to 'Edit', edit_question_path(@question) %> |
-        <%= link_to 'Back', questions_path %>
+    <div id="options-info-wrapper">
+        
     </div>
-<% end %>
+    <% if current_user.admin? %>
+        <div id="admin-panel">
+            <h2>Add Option</h2>
+            <%= form_for([@question, @question.options.build]) do |f| %>
+            <p>
+                <%= f.label :option_text %><br />
+                <%= f.text_field :option_text %>
+            </p>
+            <p>
+                <%= f.submit %>
+            </p>
+            <% end %>
+        </div>
+    <% end %>
+</div>

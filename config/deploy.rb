@@ -1,8 +1,8 @@
 # config valid only for Capistrano 3.1
-lock '3.1.0'
+lock '3.4.1'
 
 set :application, 'benchmark_your_bet'
-set :repo_url, 'git@example.com:classequalsarthur/benchmark_your_bet.git'
+set :repo_url, 'https://github.com/classequalsarthur/benchmark_your_bet.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }

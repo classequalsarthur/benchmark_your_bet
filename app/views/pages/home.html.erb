@@ -5,5 +5,10 @@
     <h2 class="headerMessage"><%= random_fact() %></h2>
 </div>
 <div class="body">
-    
+    <div class="column one textCenter">
+        <h3>Howdy</h3>
+        <p>Benchmark Your Bet is currently in an early beta stage!</p>
+        <p>If you run into a bug or an error please <a class="linkWhite"href="mailto:hi@arthurrigley.com">send me an email</a> and let me know what you did to make it happen, I'd really appreciate it <i class="fa fa-smile-o"></i>.</p>
+        <p>Use the navigation on your left or simply click <%= link_to 'here', {:controller => '/questions', :action => 'index'}, :class => 'linkWhite' %> to view the questions. Let's get voting!</p>
+    </div>
 </div>

@@ -1,6 +1,9 @@
-<h1>EDIT QUESTION</h1>
+<div class="header">
+    <h1>EDIT QUESTION</h1>
+</div>
+<div class="body">
+    <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @question %> |
-<%= link_to 'Back', questions_path %>
+    <%= link_to 'Show', @question %> |
+    <%= link_to 'Back', questions_path %>
+</div>
