@@ -47,6 +47,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'capistrano-upload-config'
+
 group :development do
     gem 'capistrano',         require: false
     gem 'capistrano-rvm',     require: false
