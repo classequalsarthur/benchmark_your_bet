@@ -46,10 +46,9 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#     huh... <%= ENV['BET_DATABASE_PASSWORD'] %>
 #
 production:
   <<: *default
   database: bet_production
   username: root
-  password: 6hQe2FCmVNrzeC3
+  password: <%= ENV['BET_DATABASE_PASSWORD'] %>
