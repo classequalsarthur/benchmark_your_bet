@@ -18,12 +18,15 @@ $greenDark: #264326;
 $greenMid: #315331;
 $greenLight: #74ae5c;
 
-
 /* FONTS */
 $font: 'Montserrat';
 $fontBold: 700;
 $fontLight: 300;
 
+/* MEDIA QUERIES */
+$breakpoint-main-structure: 1060px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 667px;
 
 /* MISC */
 $trans: all 0.3s;
@@ -133,6 +136,7 @@ html, body{
                 color: $white;
             }
             i{
+                display: block;
                 float: left;
                 margin-top: 10px;
                 margin-right: 20px;
@@ -190,7 +194,6 @@ html, body{
         position: relative;
         float: left;
         width: 25.33%;
-        min-height: 200px;
         padding: 2%;
         margin: 2%;
         background-color: $redMid;
@@ -419,7 +422,7 @@ h1,h2,h3,h4,p{
 }
 h1{
     padding-top: 20px;
-    font-size: 42px;
+    font-size: 40px;
     font: $font;
     font-weight: $fontBold;
 }
@@ -456,7 +459,82 @@ a{
     }
 }
 
-/* 3.0 MISC */
+/* 3.0 MEDIA QUERIES */
+@media (max-width: $breakpoint-main-structure) {
+    #left{
+        position: static;
+        float: left;
+        width: 90%;
+        padding: 10px 5%;
+        height: auto;
+        
+        img{
+            float: left;
+            max-width: 15%;
+            margin: 0;
+        }
+        .leftWrap{
+            float: right;
+            width: 85%;
+            
+            #user-greeting{
+                float: right;
+                width: 100%;
+                text-align: right;
+            }
+            .nav{
+                float: right;
+                width: 100%;
+                border: none;
+                margin: 0;
+                    
+                i{
+                    display: none;
+                }
+                
+                li{
+                    padding: 0;
+                    float: left;
+                    width: auto;
+                    border: none;
+                    padding: 0 10px;
+                    
+                    a{
+                        padding: 0;
+                    }
+
+                    &:hover{
+                        padding: 0 10px;
+                    }
+                }
+            }
+        }
+    }
+    #content{
+        float: left;
+        width: 90%;
+        padding: 0 5%;
+    }
+}
+@media (max-width: $breakpoint-tablet) {
+    .title{
+        width: 100%!important;
+        margin-bottom: 0;
+    }
+    .headerMessage{
+        width: 100%!important;
+    }
+}
+@media (max-width: $breakpoint-mobile) {
+    .question{
+        width: 90%!important;
+        margin: 0!important;
+        padding: 0 5% 5%!important;
+        margin-bottom: 20px!important;
+    }
+}
+
+/* 4.0 MISC */
 .linkWhite{
     color: $redLight!important;
     transition: $trans;

@@ -15,23 +15,25 @@
     <div id="left">
         <%= link_to image_tag("logo.png", alt: "Benchmark Your Bet"), {:controller => '/pages', :action => 'home'}, {:class => 'websiteLogo'} %>
         
-        <div id="user-greeting">
-            <% if user_signed_in? %>
-            <p><%= hello_greeting() %> <%= current_user.email %>, <br> Not you? <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>.</p>
-            <% else %>
-                <p class="signButton"><%= link_to "Log In", new_user_session_path, method: :get %></p>
-                <p class="signButton"><%= link_to "Free sign Up", new_user_registration_path %></p>
-            <% end %>
+        <div class="leftWrap">
+            <div id="user-greeting">
+                <% if user_signed_in? %>
+                <p><%= hello_greeting() %> <%= current_user.email %>, <br> Not you? <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>.</p>
+                <% else %>
+                    <p class="signButton"><%= link_to "Log In", new_user_session_path, method: :get %></p>
+                    <p class="signButton"><%= link_to "Free sign Up", new_user_registration_path %></p>
+                <% end %>
+            </div>
+            <ul class="nav">
+                <li><i class="fa fa-home fa-2x"></i> <%= link_to 'Home Page', {:controller => '/pages', :action => 'home'} %></li>
+                <li><i class="fa fa-list-ul fa-2x"></i> <%= link_to 'Main Feed', {:controller => '/questions', :action => 'index'} %></li>
+                <li><i class="fa fa-info-circle fa-2x"></i> <%= link_to 'About', {:controller => '/pages', :action => 'about'} %></li>
+                <% if user_signed_in? %>
+                    <li><i class="fa fa-user fa-2x"></i> <%= link_to 'Profile Settings', edit_user_registration_path %></li>
+                    <li><i class="fa fa-sign-out fa-2x"></i> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                <% end %>
+            </ul>
         </div>
-        <ul class="nav">
-            <li><i class="fa fa-home fa-2x"></i> <%= link_to 'Home Page', {:controller => '/pages', :action => 'home'} %></li>
-            <li><i class="fa fa-list-ul fa-2x"></i> <%= link_to 'Main Feed', {:controller => '/questions', :action => 'index'} %></li>
-            <li><i class="fa fa-info-circle fa-2x"></i> <%= link_to 'About', {:controller => '/pages', :action => 'about'} %></li>
-            <% if user_signed_in? %>
-                <li><i class="fa fa-user fa-2x"></i> <%= link_to 'Profile Settings', edit_user_registration_path %></li>
-                <li><i class="fa fa-sign-out fa-2x"></i> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-            <% end %>
-        </ul>
         
     </div>
     <div id="content">
