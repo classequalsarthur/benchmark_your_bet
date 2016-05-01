@@ -65,36 +65,20 @@ html, body{
     padding: 1%;
     height: 98%;
     
+    #nav-trigger{
+        display: none;
+        float: right;
+        margin-top: 20px;
+    }
     img{
         display: block;
         width: 100%;
         max-width: 250px;
         margin: auto;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
     #user-greeting{
         text-align: center;
-        
-        .signButton{
-            float: left;
-            width: 44%;
-            margin: 0 3%;
-            transition: $trans;
-            -webkit-transition: $trans;
-            -moz-transition: $trans;
-            
-            a{
-                display: block;
-                padding: 10px 0;
-                color: $white;
-                border: 2px solid $white;
-
-                &:hover{
-                    color: $greenLight;
-                    border-color: $greenLight;
-                }
-            }
-        }
     }
     .nav{
         float: left;
@@ -471,20 +455,19 @@ a{
         width: 80%;
         padding: 10px 10%;
         height: auto;
-        .signButton{
-            float: right!important;
-            width: 24%!important;
-            padding: 5px;
-            text-align: center;
-        }
+        
         img{
             float: left;
-            max-width: 15%;
+            max-width: 20%;
             margin: 0;
+        }
+        .headerWrap{
+            float: right;
+            width: 70%;
         }
         #user-greeting{
             float: right;
-            width: 85%;
+            width: 100%;
             text-align: right;
         }
         .nav{
@@ -531,6 +514,9 @@ a{
     .headerMessage{
         width: 100%!important;
     }
+    h1{
+        font-size: 34px;
+    }
 }
 @media (max-width: $breakpoint-mobile) {
     #left{
@@ -554,9 +540,46 @@ a{
         margin: 0%;
     }
 }
+@media (max-width: 800px){
+    #nav-trigger{
+        display: block!important;
+        cursor: pointer;
+    }
+    .nav{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 999999999;
+        background: $redLight!important;
+        
+        #nav-back{
+            display: block;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            z-index: 9999999999;
+            font-size: 14px;
+        }
+        
+        li{
+            display: block;
+            padding: 0!important;
+            margin: 20px 0!important;
+            width: 100%!important;
+        }
+    }
+}
 @media (max-width: $breakpoint-small-mobile) {
     #left{
+        text-align: center;
         
+        #nav-trigger{
+            float: none;
+        }
         img{
             max-width: 40%;
             margin: 0 30%;
@@ -564,6 +587,9 @@ a{
         #user-greeting{
             width: 100%;
             text-align: center;
+        }
+        .headerWrap{
+            width: 100%;
         }
     }
 }
