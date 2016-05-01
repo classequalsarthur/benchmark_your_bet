@@ -27,6 +27,7 @@ $fontLight: 300;
 $breakpoint-main-structure: 1060px;
 $breakpoint-tablet: 768px;
 $breakpoint-mobile: 667px;
+$breakpoint-small-mobile: 480px;
 
 /* MISC */
 $trans: all 0.3s;
@@ -153,7 +154,7 @@ html, body{
 .header{
     float: left;
     width: 90%;
-    padding: 20px 5% 0;
+    padding: 20px 5%;
     border-bottom: 1px solid $redLight;
 
     .title{
@@ -464,48 +465,51 @@ a{
     #left{
         position: static;
         float: left;
-        width: 90%;
-        padding: 10px 5%;
+        width: 80%;
+        padding: 10px 10%;
         height: auto;
-        
+        .signButton{
+            float: right!important;
+            width: 24%!important;
+            padding: 5px;
+            text-align: center;
+        }
         img{
             float: left;
             max-width: 15%;
             margin: 0;
         }
-        .leftWrap{
+        #user-greeting{
             float: right;
             width: 85%;
+            text-align: right;
+        }
+        .nav{
+            float: right;
+            clear: both;
+            width: 100%;
+            border: none;
+            margin: 0;
             
-            #user-greeting{
-                float: right;
-                width: 100%;
-                text-align: right;
-            }
-            .nav{
-                float: right;
-                width: 100%;
+            li{
+                float: none;
+                display: inline-block;
+                text-align: center;
+                padding: 0;
+                width: auto;
                 border: none;
-                margin: 0;
-                    
-                i{
-                    display: none;
-                }
-                
-                li{
-                    padding: 0;
-                    float: left;
-                    width: auto;
-                    border: none;
-                    padding: 0 10px;
-                    
-                    a{
-                        padding: 0;
-                    }
+                padding: 5px 10px;
 
-                    &:hover{
-                        padding: 0 10px;
-                    }
+                i{
+                    float: none;
+                    margin: 0 auto 5px;
+                }
+                a{
+                    padding: 0;
+                }
+
+                &:hover{
+                    padding: 0 10px;
                 }
             }
         }
@@ -526,14 +530,40 @@ a{
     }
 }
 @media (max-width: $breakpoint-mobile) {
+    #left{
+        width: 90%;
+        padding: 10px 5%;
+    }
     .question{
         width: 90%!important;
         margin: 0!important;
         padding: 0 5% 5%!important;
         margin-bottom: 20px!important;
     }
+    .one{
+        width: 90%;
+        padding: 20px 5%;
+        margin: 0%;
+    }
+    .two{
+        width: 90%;
+        padding: 20px 5%;
+        margin: 0%;
+    }
 }
-
+@media (max-width: $breakpoint-small-mobile) {
+    #left{
+        
+        img{
+            max-width: 40%;
+            margin: 0 30%;
+        }
+        #user-greeting{
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
 /* 4.0 MISC */
 .linkWhite{
     color: $redLight!important;
