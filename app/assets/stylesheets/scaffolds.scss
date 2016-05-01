@@ -19,7 +19,8 @@ $greenMid: #315331;
 $greenLight: #74ae5c;
 
 /* FONTS */
-$font: 'montserratbold';
+$fontHeading: 'montserratbold';
+$fontBody: 'montserratlight';
 $fontBold: 700;
 $fontLight: 300;
 
@@ -50,8 +51,8 @@ $trans: all 0.3s;
 html, body{
     padding: 0;
     margin: 0;
-    font-family: $font;
-    font-weight: $fontLight;
+    font-family: $fontBody;
+    font-family: $fontLight;
     font-size: 13px;
     height: 100%;
 //    overflow: hidden;
@@ -108,7 +109,7 @@ html, body{
         li{
             width: 90%;
             float: left;
-            font-weight: $fontLight;
+            font-family: $fontBody;
             list-style: none;
             display: block;
             font-size: 13px;
@@ -310,7 +311,8 @@ html, body{
         padding: 0 3%;
         font-size: 26px;
         text-align: center;
-        font-weight: $fontBold;
+        font-weight: $fontHeading;
+        font-family: $fontBold;
         color: white;
     }
 }
@@ -424,23 +426,24 @@ h1,h2,h3,h4,p{
 h1{
     padding-top: 20px;
     font-size: 40px;
-    font: $font;
+    font-family: $fontHeading;
     font-weight: $fontBold;
 }
 h2{
     font-size: 16px;
-    font: $font;
+    font-family: $fontBody;
     font-weight: $fontLight;
     line-height: 1.5;
 }
 h3{
     font-size: 20px;
-    font: $font;
+    font-family: $fontHeading;
     font-weight: $fontBold;
     text-align: center;
 }
 p{
     font-size: 14px;
+    font-family: $fontBody;
     font-weight: $fontLight;
     line-height: 1.5;
 }
