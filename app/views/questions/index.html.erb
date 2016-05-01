@@ -15,9 +15,35 @@
 <% else %>
 
     <div class="body">
-        <% @questions.order("fixture_date asc").in_groups_of(3, false).each do |group| %>
+        <% @questions.where('fixture_date > ?', DateTime.now - 2.hours).order("fixture_date asc").in_groups_of(3, false).each do |group| %>
             <div class="row">
                 <% group.each do |question| %>
+                    <% Time.zone = 'GMT'
+
+                        t = (question.fixture_date - DateTime.now).to_i
+
+                        mm, ss = t.divmod(60)            #=> [4515, 21]
+                        hh, mm = mm.divmod(60)           #=> [75, 15]
+                        dd, hh = hh.divmod(24)           #=> [3, 3]
+                        
+                        if question.fixture_date < DateTime.now
+                            report = "Fixture has started! Current fixtures are removed two hours after beginning." 
+                        else
+                            report = "%d days, %d hours, %d minutes" % [dd, hh, mm]
+                        end
+#
+#                        if dd > 0
+#                            report = "%d days remaining" % [dd]
+#                        elsif dd <= 0 && hh > 0
+#                            report = "%d hours, %d minutes remaining" % [hh, mm]
+#                        elsif dd <= 0 && hh <= 0 && mm > 0
+#                            report = "%d minutes remaining" % [mm]
+#                        elsif dd <= 0 && hh <= 0 && mm <= 0 && ss > 0
+#                            report = "Less than 1 minute remaining!"
+#                        elsif dd <= 0 && hh <= 0 && mm <= 0 && ss <= 0
+#                            report = "Fixture has started"
+#                        end
+                    %>
                     <div class="question">
                         <div class="questionMeta">
                             <h3><%= question.category %></h3>
@@ -31,33 +57,7 @@
                         </div>
                         <div class="time">
                             <p>
-                            <%=
-                                var = (question.fixture_date - DateTime.now).to_i 
-
-                                t = var
-                                mm, ss = t.divmod(60)            #=> [4515, 21]
-                                hh, mm = mm.divmod(60)           #=> [75, 15]
-                                dd, hh = hh.divmod(24)           #=> [3, 3]
-                                
-                                bb = hh-1
-
-                                 report = "%d days, %d hours, %d minutes, %d seconds" % [dd, hh, mm, ss]
-
-#                                if dd > 0
-#                                    report = "%d days remaining" % [dd]
-#                                elsif dd <= 0 && bb > 0
-#                                    report = "%d hours, %d minutes remaining" % [bb, mm]
-#                                elsif dd <= 0 && bb <= 0 && mm > 0
-#                                    report = "%d minutes remaining" % [mm]
-#                                elsif dd <= 0 && bb <= 0 && mm <= 0 && ss > 0
-#                                    report = "Less than 1 minute remaining!"
-#                                elsif dd <= 0 && bb <= 0 && mm <= 0 && ss <= 0
-#                                    report = "Fixture has started"
-#                                end
-
-                                report
-
-                            %>
+                                <%= report %>
                             </p>
                         </div><br>
                         <%= link_to 'Vote Now', question, :class => 'voteNow' %>
