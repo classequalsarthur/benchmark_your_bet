@@ -26,10 +26,16 @@
                         hh, mm = mm.divmod(60)           #=> [75, 15]
                         dd, hh = hh.divmod(24)           #=> [3, 3]
                         
-                        if question.fixture_date < DateTime.now
-                            report = "Fixture has started! Current fixtures are removed two hours after beginning." 
+                        bb = hh - 1
+
+                        if question.fixture_date < DateTime.now + 1.hours
+                            report = "Fixture has started! Current fixtures are removed three hours after beginning."
+                        elsif dd > 0
+                            report = "%d days remaining" % [dd]
+                        elsif dd <= 0
+                            report = "%d hours, %d minutes remaining" % [bb, mm]
                         else
-                            report = "%d days, %d hours, %d minutes" % [dd, hh, mm]
+                            report = "%d days, %d hours, %d minutes" % [dd, bb, mm]
                         end
 #
 #                        if dd > 0
