@@ -216,7 +216,7 @@ html, body{
             width: 90%;
             padding: 20px 5%;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
         .noVote{
             background-color: $redLight;
@@ -229,13 +229,14 @@ html, body{
     }
     #options-wrapper{
         float: left;
-        width: 50%;
+        width: 100%;
         
         .option{
             position: relative;
             float: left;
-            width: 92%;
-            padding: 4%;
+            width: 44%;
+            padding: 2%;
+            margin: 1%;
             margin-bottom: 20px;
             background-color: $redDark;
             
@@ -268,7 +269,7 @@ html, body{
     }
     #options-info-wrapper{
         float: right;
-        width: 50%;
+        width: 100%;
     }
     
 }
@@ -286,9 +287,13 @@ html, body{
         color: $white;
     }
 }
+.vFix{
+    height: 50px;
+}
 .voteTimerBar{
     float: left;
-    width: 100%;
+    width: 98%;
+    margin: 0 1%;
     background: $greenLight;
     margin-top: 10px;
     p{
@@ -300,7 +305,7 @@ html, body{
         width: 94%;
         padding: 0 3%;
         font-size: 26px;
-        text-align: right;
+        text-align: center;
         font-weight: $fontBold;
         color: white;
     }
@@ -460,6 +465,12 @@ a{
     
     &:hover{
         color: $greenLight!important;
+    }
+}
+.linkGreen{
+    color: $white;
+    &:hover{
+        color: $redLight;
     }
 }
 .textCenter{

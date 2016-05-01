@@ -38,7 +38,11 @@ $.rails.confirm = function(message, element)
             $('.voteTimer').html("");
         }
     }
-    
+    $('.voteTimerBar').animate({
+        'width': '0%'
+    }, 3000, function(){
+        $(this).css({'width':'100%'})
+    });
     if (!state)
     {
         //on click set timer and physical p tag number
@@ -46,7 +50,7 @@ $.rails.confirm = function(message, element)
         setTimeout(countDown,1000);
         
         element.data('state', 'last');
-        element.text('Click again to confirm.');
+        element.text('Click to confirm');
         setTimeout(function()
         {
             element.data('state', null);

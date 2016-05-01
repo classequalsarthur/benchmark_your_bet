@@ -6,36 +6,40 @@
 <div class="body">
     <div class="hasVoted">
         <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
-            <p class="yesVote">You've voted!</p>
+            <p class="yesVote">You've voted! <a class="linkGreen" href="mailto:hi@arthurrigley.com?subject=Request Reset">Request a reset</a>?</p>
         <% else %>
-            <p class="noVote">You haven't voted yet, Vote for an option to see the results!</p>
+            <p class="noVote">You haven't voted yet, make your choice and confirm it to see the results, you only get one vote though!</p>
         <% end %>
     </div>
+        <div class="vFix"><div class="voteTimerBar"><p class="voteTimer"></p></div></div>
     <div id="options-wrapper">
-    <% @question.options.each_with_index do |option, index| %>
+    <% @question.options.in_groups_of(2, false).each do |group| %>
+        <div class="row">
+            <% group.each do |option| %>
 
-        <div class="option">
-            <p class="optionText"><%= option.option_text %></p>
-            <% if current_user.admin? %>
-                    <h3 class="optionCount"><%= option.answers.count %></h3>
-                    <% if Answer.where(:user_id => current_user.id, :option_id => option.id).present? %>
-                        <div class="votedFor"><i class="fa fa-check fa-1x"></i> Your Vote</div>
+                <div class="option">
+                    <p class="optionText"><%= option.option_text %></p>
+                    <% if current_user.admin? %>
+                            <h3 class="optionCount"><%= option.answers.count %></h3>
+                            <% if Answer.where(:user_id => current_user.id, :option_id => option.id).present? %>
+                                <div class="votedFor"><i class="fa fa-check fa-1x"></i> Your Vote</div>
+                            <% else %>
+                                <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'voteNow', method: :post %>
+                            <% end %>
                     <% else %>
-                        <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'voteNow', method: :post %>
+                        <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
+                    <h3 class="optionCount"><%= pluralize(option.answers.count, "vote") %></h3>
+                            <% if Answer.where(:user_id => current_user.id, :option_id => option.id).present? %>
+                                <div class="votedFor"><i class="fa fa-check fa-1x"></i> Your Vote</div>
+                            <% end %>
+                        <% else %>
+                            <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'voteNow', method: :post %>
+                        <% end %>
                     <% end %>
-            <% else %>
-                <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
-                    <h3 class="optionCount"><%= option.answers.count %></h3>
-                    <% if Answer.where(:user_id => current_user.id, :option_id => option.id).present? %>
-                        <div class="votedFor"><i class="fa fa-check fa-1x"></i> Your Vote</div>
-                    <% end %>
-                <% else %>
-                    <%= link_to 'Vote', question_option_upvote_path(@question, option), data: { confirm: 'Are you sure you want to vote for this option?' }, :class => 'voteNow', method: :post %>
-                <% end %>
+                </div>
             <% end %>
         </div>
     <% end %>
-        <div class="voteTimerBar"><p class="voteTimer"></p></div>
     </div>
     <div id="options-info-wrapper">
         
