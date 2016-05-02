@@ -38,13 +38,22 @@ module ApplicationHelper
     end
     
     def random_fact()
-        opening = ["The Wisdom of the Crowd is a theory which claims all the answers added together, divided by the total number of answers can be very close to the correct answer.",
+        opening = [
+            
+            "The Wisdom of the Crowd is a theory which claims all the answers added together, divided by the total number of answers can be very close to the correct answer.",
+            "The more people who vote on an answer, the stronger the collective opinion will be. Share it around to everyone you know!",
+            "Strength in numbers! Invite your friends to get a more quantitative result!",
+            
+            "An alligator's tooth is said to increase luck in gambling!",
+            "Do you have your lucky alligator tooth?",
+            
             "What kind of bet are you looking at today? Football? Rugby? Horse-racing?",
-            "Some people consider an alligator's tooth to bring them luck with gambling!",
-            "Thanks for using Benchmark Your Bet!" ,
-            "The more people who vote on an answer, the stronger the collective opinion will be. Share it around to everyone you know!"]
+            "Up to speed with the news on Olympics this year? Do you want Benchmark Your Bet for the upcoming games? Let us know!",
+            "Thanks for using Benchmark Your Bet!"
+            
+            ]
         
-        "#{opening[rand(5)]}"
+        "#{opening[rand(8)]}"
     end
     
     def get_random_number(max_value = 10)
