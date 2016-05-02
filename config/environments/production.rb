@@ -78,13 +78,15 @@ Rails.application.configure do
     
     
 
-    config.action_mailer.default_url_options = {:host => 'benchmarkyourbet.com'}
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-    :address => "139.59.167.166",
-    :port    => 25,
-    :domain  => 'benchmarkyourbet.com'
-    }
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'benchmarkyourbet.com',
+    :user_name            => 'hi@arthurrigley.com',
+    :password             => '!1157myPword',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
     
     
 end
