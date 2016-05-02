@@ -86,5 +86,28 @@
     <div id="admin-panel">
         <%= link_to 'New Question', new_question_path %>
     </div>
+        <h1>All old questions</h1>
+        <% @questions.where('fixture_date < ?', DateTime.now - 2.hours).order("fixture_date asc").in_groups_of(5, false).each do |group| %>
+            <div class="row">
+                <% group.each do |question| %>
+                    <div class="column five">
+                        <div class="questionMeta">
+                            <h3><%= question.category %></h3>
+                            <p><% fd = question.fixture_date %>
+                                <%= fd.strftime('%A, %d %B %Y - %H:%M:%S') %>
+
+                            </p>
+                        </div>
+                        <div class="questionText">
+                            <p><%= question.question_text %></p>
+                        </div>
+                        <%= link_to 'Show', question %>
+                         • <%= link_to 'Edit', edit_question_path(question) %> • 
+                        <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+
 <% end %>
         

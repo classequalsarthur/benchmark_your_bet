@@ -166,15 +166,15 @@ html, body{
         padding-top: 20px;
     }
 }
+
+.row{
+    float: left;
+    width: 100%;
+}
 .body{
     float: left;
     width: 100%;
     padding: 20px 0 40px;
-    
-    .row{
-        float: left;
-        width: 100%;
-    }
     
     .question{
         position: relative;
@@ -319,6 +319,12 @@ html, body{
     width: 42%;
     padding: 20px 2%;
     margin: 2%;
+}
+.five{
+    background-color: #00acd0;
+    width: 19%;
+    padding: 0;
+    margin: 0.5%;
 }
 .profileSettings{
     float: left;
