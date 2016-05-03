@@ -6,12 +6,11 @@
 <div class="body">
     <div class="hasVoted">
         <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
-            <p class="yesVote">You've voted! <a class="linkGreen" href="mailto:hi@arthurrigley.com?subject=Request Reset">Request a reset</a>?</p>
+            <p class="yesVote">You've voted!</p>
         <% else %>
-            <p class="noVote">You haven't voted yet, make your choice and confirm it to see the results, you only get one vote though!</p>
+            <p class="noVote">You haven't voted yet, make your choice and confirm it to see the results <br> You only get one vote though!</p>
         <% end %>
     </div>
-        <div class="vFix"><div class="voteTimerBar"><p class="voteTimer"></p></div></div>
     <div id="options-wrapper">
     <% @question.options.in_groups_of(2, false).each do |group| %>
         <div class="row">
@@ -42,7 +41,20 @@
     <% end %>
     </div>
     <div id="options-info-wrapper">
-        
+        <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
+            <% @answers.where.not('message' => nil).each do |answer| %>
+                <div class="messageWrap">
+                    <p class="messageEmail"> 
+                        <% user = User.find(answer.user_id) %>
+                        <span class="textBold"><%= user.email %></span> commented:
+                    </p>
+                    <p class="messageContent"><%= answer.message %></p>
+                </div>
+            <% end %>
+        <% else %>
+            <p class="textWhite">Add an optional message to explain the reasoning behind your vote...</p>
+            <%= text_area :message, autofocus: true %>
+        <% end %>
     </div>
     <% if current_user.admin? %>
         <div id="admin-panel">

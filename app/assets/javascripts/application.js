@@ -21,32 +21,17 @@ $.rails.confirm = function(message, element)
     var state = element.data('state');
     var txt = element.text();
     // countdown timer
-    var num = 3000;
+    var num = 5000;
     // physical number
-    var cd = 3;
-    function countDown(){
-        // minus
-        cd--;
+    function countDown()
         // if more than 0, count down for 1 second
         if(cd > 0){
             setTimeout(countDown,1000);
-            //update p tag
-            $('.voteTimer').html(cd);
-        }
-        // is 0, make nothing
-        if(cd == 0){
-            $('.voteTimer').html("");
         }
     }
-    $('.voteTimerBar').animate({
-        'width': '0%'
-    }, 3000, function(){
-        $(this).css({'width':'100%'})
-    });
     if (!state)
     {
         //on click set timer and physical p tag number
-        $('.voteTimer').html(cd);
         setTimeout(countDown,1000);
         
         element.data('state', 'last');

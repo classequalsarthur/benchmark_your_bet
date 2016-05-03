@@ -10,6 +10,8 @@ class QuestionsController < ApplicationController
     # GET /questions/1
     # GET /questions/1.json
     def show
+        @answers = Answer.all
+        @users = User.all
     end
 
     # GET /questions/new

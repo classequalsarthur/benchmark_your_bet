@@ -206,12 +206,15 @@ html, body{
             border-bottom: 1px solid $white;
         }
     }
+    
+    /*<%#User.find(:email).where(:user_id => answer.user_id)%>
+                    <%= answer.user_id %> */
     .hasVoted{
         p{
             width: 90%;
             padding: 20px 5%;
             text-align: center;
-            margin-bottom: 0px;
+            margin-bottom: 20px;
         }
         .noVote{
             background-color: $redLight;
@@ -224,7 +227,7 @@ html, body{
     }
     #options-wrapper{
         float: left;
-        width: 100%;
+        width: 50%;
         
         .option{
             position: relative;
@@ -237,22 +240,49 @@ html, body{
             
             .optionText{
                 float: left;
-                width: 80%;
+                width: 55%;
                 color: $white;
                 margin-top: 0;
             }
             .optionCount{
                 float: right;
                 color: $white;
-                width: 20%;
+                width: 45%;
                 margin-top: 0;
             }
-            // signify which option user voted for
         }
     }
     #options-info-wrapper{
         float: right;
-        width: 100%;
+        width: 42%;
+        padding: 0 3% 20px;
+        margin-top: 0.5%;
+        background-color: $redMid;
+        max-height: 300px;
+        overflow-y: scroll;
+        
+        .messageWrap{
+            float: left;
+            width: 94%;
+            padding: 3%;
+            color: white;
+            border-bottom: 1px solid $white;
+            
+            .messageEmail{
+                margin-bottom: 0;
+            }
+            .messageContent{
+                margin-top: 0;
+                margin-left: 20px;
+            }
+        }
+        textarea{
+            width: 96%;
+            padding: 2%;
+            min-height: 100px;
+            outline: none;
+            border: none;
+        }
     }
     
 }
@@ -290,27 +320,6 @@ html, body{
 }
 .vFix{
     height: 50px;
-}
-.voteTimerBar{
-    float: left;
-    width: 98%;
-    margin: 0 1%;
-    background: $greenLight;
-    margin-top: 10px;
-    p{
-        margin: 0;
-    }
-
-    .voteTimer{
-        float: left;
-        width: 94%;
-        padding: 0 3%;
-        font-size: 26px;
-        text-align: center;
-        font-weight: $fontHeading;
-        font-family: $fontBold;
-        color: white;
-    }
 }
 #content{
     float: right;
@@ -535,6 +544,11 @@ a{
     h1{
         font-size: 34px;
     }
+    .option{
+        width: 96%!important;
+        margin: 0!important;
+        margin-bottom: 20px!important;
+    }
 }
 @media (max-width: $breakpoint-mobile) {
     #left{
@@ -545,11 +559,6 @@ a{
         width: 90%!important;
         margin: 0!important;
         padding: 0 5% 5%!important;
-        margin-bottom: 20px!important;
-    }
-    .option{
-        width: 96%!important;
-        margin: 0!important;
         margin-bottom: 20px!important;
     }
     .one{
@@ -623,8 +632,17 @@ a{
             width: 100%;
         }
     }
+    #options-wrapper, #options-info-wrapper{
+        width: 100%!important;
+    }
 }
 /* 4.0 MISC */
+.textBold{
+    font-family: $fontHeading;
+}
+.textWhite{
+    color: $white;
+}
 .linkWhite{
     color: $redLight!important;
     transition: $trans;

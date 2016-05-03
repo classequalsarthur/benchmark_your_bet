@@ -37,18 +37,6 @@
                         else
                             report = "%d days, %d hours, %d minutes" % [dd, bb, mm]
                         end
-#
-#                        if dd > 0
-#                            report = "%d days remaining" % [dd]
-#                        elsif dd <= 0 && hh > 0
-#                            report = "%d hours, %d minutes remaining" % [hh, mm]
-#                        elsif dd <= 0 && hh <= 0 && mm > 0
-#                            report = "%d minutes remaining" % [mm]
-#                        elsif dd <= 0 && hh <= 0 && mm <= 0 && ss > 0
-#                            report = "Less than 1 minute remaining!"
-#                        elsif dd <= 0 && hh <= 0 && mm <= 0 && ss <= 0
-#                            report = "Fixture has started"
-#                        end
                     %>
                     <div class="question">
                         <div class="questionMeta">
@@ -88,7 +76,6 @@
         <% end %>
     </div>
 <% end %>
-        
 <% if current_user.try(:admin?) %>
     <div id="admin-panel">
         <%= link_to 'New Question', new_question_path %>
@@ -102,7 +89,6 @@
                             <h3><%= question.category %></h3>
                             <p><% fd = question.fixture_date %>
                                 <%= fd.strftime('%A, %d %B %Y - %H:%M:%S') %>
-
                             </p>
                         </div>
                         <div class="questionText">

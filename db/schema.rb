@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426153132) do
+ActiveRecord::Schema.define(version: 20160503114333) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              limit: 255, default: "", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160426153132) do
     t.integer "user_id",     limit: 4
     t.integer "question_id", limit: 4
     t.integer "option_id",   limit: 4
+    t.string  "message",     limit: 255
   end
 
   add_index "answers", ["option_id"], name: "index_answers_on_option_id", using: :btree
