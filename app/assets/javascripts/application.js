@@ -23,7 +23,7 @@ $.rails.confirm = function(message, element)
     // countdown timer
     var num = 5000;
     // physical number
-    function countDown()
+    function countDown(){
         // if more than 0, count down for 1 second
         if(cd > 0){
             setTimeout(countDown,1000);
