@@ -66,9 +66,14 @@
                                 <%= report %>
                             </p>
                         </div>
-                        <p><%= question.options.count %></p>
+                        <p><%= question.answers.count %> total answers.</p>
                         <br>
-                        <%= link_to 'Vote Now', question, :class => 'voteNow' %>
+                        <% if question.answers.exists?(:user_id => current_user.id, :question_id => question.id) %>
+                            <div class="votedFor fifper"><i class="fa fa-check fa-1x"></i> Voted</div>
+                            <div><%= link_to 'View Results', question, :class => 'voteNow fifper' %></div>
+                        <% else %>
+                            <%= link_to 'Vote Now', question, :class => 'voteNow' %>
+                        <% end %>
 
                         <% if current_user.try(:admin?) %>
                             <div class="adminButtons">

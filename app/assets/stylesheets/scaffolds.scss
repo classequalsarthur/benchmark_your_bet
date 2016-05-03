@@ -58,9 +58,10 @@ html, body{
 //    overflow: hidden;
 }
 #home-page-img{
-    float: left;
-    width: 100%;
-    max-width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 40%;
 }
 #left{
     position: fixed;
@@ -247,18 +248,6 @@ html, body{
                 margin-top: 0;
             }
             // signify which option user voted for
-            .votedFor{
-                float: left;
-                width: 100%;
-                padding: 10px 0;
-                background-color: $greenLight;
-                color: $white;
-                text-align: center;
-                
-                i{
-                    
-                }
-            }
         }
     }
     #options-info-wrapper{
@@ -266,6 +255,20 @@ html, body{
         width: 100%;
     }
     
+}
+
+.votedFor{
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    //margin-bottom: 10px;
+    background-color: $greenDark;
+    color: $white;
+    text-align: center;
+
+    i{
+
+    }
 }
 // button
 .voteNow{
@@ -281,6 +284,9 @@ html, body{
         background-color: $greenMid;
         color: $white;
     }
+}
+.fifper{
+    width: 50%;
 }
 .vFix{
     height: 50px;
@@ -555,6 +561,14 @@ a{
         width: 90%;
         padding: 20px 5%;
         margin: 0%;
+    }
+    #home-page-img{
+        position: relative;
+        float: left;
+        width: 100%;
+        max-width: 70%;
+        margin-left: 15%;
+        margin-bottom: -100px;
     }
 }
 @media (max-width: 800px){
