@@ -5,18 +5,22 @@
     <h2 class="headerMessage"><%= random_fact() %></h2>
 </div>
 <div class="body">
-    <div class="column one textCenter">
+    <div class="column two textCenter">
         <h3>Howdy</h3>
         <p>Benchmark Your Bet is currently in an early beta stage!</p>
-        <p>If you run into a bug or an error please <a class="linkWhite"href="mailto:hi@arthurrigley.com?subject=I found a bug!">send me an email</a> and let me know what you did to make it happen, I'd really appreciate it <i class="fa fa-smile-o"></i>.</p>
-        <p>If you have a request for a question, <a class="linkWhite" href="mailto:hi@arthurrigley.com?subject=Question Request">detail the fixture in an email</a> and I will confirm and push it to the application.</p>
+        <p>If you would like to request a fixture to be posted, <a class="linkWhite" href="mailto:hi@arthurrigley.com?subject=Question Request">detail it in an email to me</a> and I will confirm and push it to the application.</p>
+        <h3><span class="textBold"><%= User.count %></span> subscribed users</h3>
+        <h3><span class="textBold"><%= Question.count %></span> questions ready to vote for</h3>
+        <h3><span class="textBold"><%= Answer.count %></span> answers from users</h3>
         <% if user_signed_in? %>
             <p>Use the navigation on your left or simply click <%= link_to 'here', {:controller => '/questions', :action => 'index'}, :class => 'linkWhite' %> to view the questions. Let's get voting!</p>
         <% else %>
-        <br>
-            <h3>To view the bets you need to be a registered user!</h3>
+            <p>Join the other users and start benchmarking your bet!</p>
             <p><%= link_to "Already have an account? Log in here!", new_user_session_path, :class => 'linkWhite' %></p>
             <p><%= link_to "Don't have an account? Sign up for free!", new_user_registration_path, :class => 'linkWhite' %></p>
         <% end %>
+    </div>
+    <div class="column two">
+        <%= image_tag('al-single.png', :alt => 'Welcome to Benchmark Your Bet', :id => 'home-page-img') %>
     </div>
 </div>

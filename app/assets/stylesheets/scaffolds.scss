@@ -57,6 +57,11 @@ html, body{
     height: 100%;
 //    overflow: hidden;
 }
+#home-page-img{
+    float: left;
+    width: 100%;
+    max-width: 100%;
+}
 #left{
     position: fixed;
     background-color: $redDark;
@@ -270,6 +275,7 @@ html, body{
     background-color: $greenLight;
     color: $white;
     text-align: center;
+    text-decoration: none;
 
     &:hover{
         background-color: $greenMid;
@@ -442,7 +448,7 @@ a{
     transition: $trans;
     -webkit-transition: $trans;
     -moz-transition: $trans;
-    text-decoration: none;
+    text-decoration: underline;
 
     &:visited {
     color: white;

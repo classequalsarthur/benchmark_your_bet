@@ -65,7 +65,9 @@
                             <p>
                                 <%= report %>
                             </p>
-                        </div><br>
+                        </div>
+                        <p><%= question.options.count %></p>
+                        <br>
                         <%= link_to 'Vote Now', question, :class => 'voteNow' %>
 
                         <% if current_user.try(:admin?) %>
