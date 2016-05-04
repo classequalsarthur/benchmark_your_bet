@@ -6,7 +6,7 @@
 <div class="body">
     <div class="hasVoted">
         <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
-            <p class="yesVote">You've voted!</p>
+        <p class="yesVote">You've voted!<br> <%= link_to 'Back To Questions', questions_path, :class => 'linkGreen' %></p>
         <% else %>
             <p class="noVote">You haven't voted yet, make your choice and confirm it to see the results <br> You only get one vote though!</p>
         <% end %>
@@ -42,7 +42,7 @@
     </div>
     <div id="options-info-wrapper">
         <% if Answer.exists?(:user_id => current_user.id, :question_id => @question.id) %>
-            <% @answers.where.not('message' => nil).each do |answer| %>
+            <% @answers.where.not('message' => nil).where(:question_id => @question.id).each do |answer| %>
                 <div class="messageWrap">
                     <p class="messageEmail"> 
                         <% user = User.find(answer.user_id) %>
@@ -53,7 +53,7 @@
             <% end %>
         <% else %>
             <p class="textWhite">Add an optional message to explain the reasoning behind your vote...</p>
-            <%= text_area :message, autofocus: true %>
+                <%= text_area :message, autofocus: true %>
         <% end %>
     </div>
     <% if current_user.admin? %>
