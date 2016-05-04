@@ -150,9 +150,9 @@ html, body {
   .body .question {
     position: relative;
     float: left;
-    width: 25.33%;
+    width: 27.33%;
     padding: 2%;
-    margin: 2%;
+    margin: 1% 1% 20px;
     background-color: #612e33;
     border-top: 3px solid #98353f;
     text-align: center; }
