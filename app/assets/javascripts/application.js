@@ -76,3 +76,8 @@ $.rails.handleLink = function(link)
 
     return false;
 };
+
+
+
+
+

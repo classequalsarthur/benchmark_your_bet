@@ -15,8 +15,257 @@
 <% else %>
 
     <div class="body">
-        <% @questions.where('fixture_date > ?', DateTime.now - 2.hours).order("fixture_date asc").in_groups_of(3, false).each do |group| %>
-            <div class="row">
+        <h3>Filter Questions</h3>
+        <ul id="category-wrapper">
+            <li><a href="#football">Football</a></li>
+            <li><a href="#rugby">Rugby</a></li>
+            <li><a href="#formula1">Formula 1</a></li>
+            <li><a href="#cricket">Cricket</a></li>
+            <li><a href="#politics">Politics</a></li>
+        </ul>
+        
+        <% @questions.where(category: 'Football').where('fixture_date > ?', DateTime.now - 2.hours).order("fixture_date asc").in_groups_of(3, false).each do |group| %>
+            <div id="football" class="row">
+                <% group.each do |question| %>
+                    <% Time.zone = 'GMT'
+
+                        t = (question.fixture_date - DateTime.now).to_i
+
+                        mm, ss = t.divmod(60)            #=> [4515, 21]
+                        hh, mm = mm.divmod(60)           #=> [75, 15]
+                        dd, hh = hh.divmod(24)           #=> [3, 3]
+                        
+                        bb = hh - 1
+
+                        if question.fixture_date < DateTime.now + 1.hours
+                            report = "Fixture has started! Current fixtures are removed three hours after beginning."
+                        elsif dd > 0
+                            report = "%d days remaining" % [dd]
+                        elsif dd <= 0
+                            report = "%d hours, %d minutes remaining" % [bb, mm]
+                        else
+                            report = "%d days, %d hours, %d minutes" % [dd, bb, mm]
+                        end
+                    %>
+                    <div class="question">
+                        <div class="questionMeta">
+                            <h3><%= question.category %></h3>
+                            <p><% fd = question.fixture_date %>
+                                <%= fd.strftime('%A, %d %B %Y - %H:%M:%S') %>
+
+                            </p>
+                        </div>
+                        <div class="questionText">
+                            <p><%= question.question_text %></p>
+                        </div>
+                        <div class="time">
+                            <p>
+                                <%= report %>
+                            </p>
+                        </div>
+                        <p><%= question.answers.count %> total answers.</p>
+                        <br>
+                        <% if question.answers.exists?(:user_id => current_user.id, :question_id => question.id) %>
+                            <div class="votedFor fifper"><i class="fa fa-check fa-1x"></i> Voted</div>
+                            <div><%= link_to 'View Results', question, :class => 'voteNow fifper' %></div>
+                        <% else %>
+                            <%= link_to 'Vote Now', question, :class => 'voteNow' %>
+                        <% end %>
+
+                        <% if current_user.try(:admin?) %>
+                            <div class="adminButtons">
+                                <%= link_to 'Show', question %>
+                                 • <%= link_to 'Edit', edit_question_path(question) %> • 
+                                <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+        
+        <% @questions.where(category: 'Rugby').where('fixture_date > ?', DateTime.now - 2.hours).order("fixture_date asc").in_groups_of(3, false).each do |group| %>
+            <div id="rugby" class="row">
+                <% group.each do |question| %>
+                    <% Time.zone = 'GMT'
+
+                        t = (question.fixture_date - DateTime.now).to_i
+
+                        mm, ss = t.divmod(60)            #=> [4515, 21]
+                        hh, mm = mm.divmod(60)           #=> [75, 15]
+                        dd, hh = hh.divmod(24)           #=> [3, 3]
+                        
+                        bb = hh - 1
+
+                        if question.fixture_date < DateTime.now + 1.hours
+                            report = "Fixture has started! Current fixtures are removed three hours after beginning."
+                        elsif dd > 0
+                            report = "%d days remaining" % [dd]
+                        elsif dd <= 0
+                            report = "%d hours, %d minutes remaining" % [bb, mm]
+                        else
+                            report = "%d days, %d hours, %d minutes" % [dd, bb, mm]
+                        end
+                    %>
+                    <div class="question">
+                        <div class="questionMeta">
+                            <h3><%= question.category %></h3>
+                            <p><% fd = question.fixture_date %>
+                                <%= fd.strftime('%A, %d %B %Y - %H:%M:%S') %>
+
+                            </p>
+                        </div>
+                        <div class="questionText">
+                            <p><%= question.question_text %></p>
+                        </div>
+                        <div class="time">
+                            <p>
+                                <%= report %>
+                            </p>
+                        </div>
+                        <p><%= question.answers.count %> total answers.</p>
+                        <br>
+                        <% if question.answers.exists?(:user_id => current_user.id, :question_id => question.id) %>
+                            <div class="votedFor fifper"><i class="fa fa-check fa-1x"></i> Voted</div>
+                            <div><%= link_to 'View Results', question, :class => 'voteNow fifper' %></div>
+                        <% else %>
+                            <%= link_to 'Vote Now', question, :class => 'voteNow' %>
+                        <% end %>
+
+                        <% if current_user.try(:admin?) %>
+                            <div class="adminButtons">
+                                <%= link_to 'Show', question %>
+                                 • <%= link_to 'Edit', edit_question_path(question) %> • 
+                                <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+        
+        <% @questions.where(category: 'Formula 1').where('fixture_date > ?', DateTime.now - 2.hours).order("fixture_date asc").in_groups_of(3, false).each do |group| %>
+            <div id="formula1" class="row">
+                <% group.each do |question| %>
+                    <% Time.zone = 'GMT'
+
+                        t = (question.fixture_date - DateTime.now).to_i
+
+                        mm, ss = t.divmod(60)            #=> [4515, 21]
+                        hh, mm = mm.divmod(60)           #=> [75, 15]
+                        dd, hh = hh.divmod(24)           #=> [3, 3]
+                        
+                        bb = hh - 1
+
+                        if question.fixture_date < DateTime.now + 1.hours
+                            report = "Fixture has started! Current fixtures are removed three hours after beginning."
+                        elsif dd > 0
+                            report = "%d days remaining" % [dd]
+                        elsif dd <= 0
+                            report = "%d hours, %d minutes remaining" % [bb, mm]
+                        else
+                            report = "%d days, %d hours, %d minutes" % [dd, bb, mm]
+                        end
+                    %>
+                    <div class="question">
+                        <div class="questionMeta">
+                            <h3><%= question.category %></h3>
+                            <p><% fd = question.fixture_date %>
+                                <%= fd.strftime('%A, %d %B %Y - %H:%M:%S') %>
+
+                            </p>
+                        </div>
+                        <div class="questionText">
+                            <p><%= question.question_text %></p>
+                        </div>
+                        <div class="time">
+                            <p>
+                                <%= report %>
+                            </p>
+                        </div>
+                        <p><%= question.answers.count %> total answers.</p>
+                        <br>
+                        <% if question.answers.exists?(:user_id => current_user.id, :question_id => question.id) %>
+                            <div class="votedFor fifper"><i class="fa fa-check fa-1x"></i> Voted</div>
+                            <div><%= link_to 'View Results', question, :class => 'voteNow fifper' %></div>
+                        <% else %>
+                            <%= link_to 'Vote Now', question, :class => 'voteNow' %>
+                        <% end %>
+
+                        <% if current_user.try(:admin?) %>
+                            <div class="adminButtons">
+                                <%= link_to 'Show', question %>
+                                 • <%= link_to 'Edit', edit_question_path(question) %> • 
+                                <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+        
+        <% @questions.where(category: 'Cricket').where('fixture_date > ?', DateTime.now - 2.hours).order("fixture_date asc").in_groups_of(3, false).each do |group| %>
+            <div id="cricket" class="row">
+                <% group.each do |question| %>
+                    <% Time.zone = 'GMT'
+
+                        t = (question.fixture_date - DateTime.now).to_i
+
+                        mm, ss = t.divmod(60)            #=> [4515, 21]
+                        hh, mm = mm.divmod(60)           #=> [75, 15]
+                        dd, hh = hh.divmod(24)           #=> [3, 3]
+                        
+                        bb = hh - 1
+
+                        if question.fixture_date < DateTime.now + 1.hours
+                            report = "Fixture has started! Current fixtures are removed three hours after beginning."
+                        elsif dd > 0
+                            report = "%d days remaining" % [dd]
+                        elsif dd <= 0
+                            report = "%d hours, %d minutes remaining" % [bb, mm]
+                        else
+                            report = "%d days, %d hours, %d minutes" % [dd, bb, mm]
+                        end
+                    %>
+                    <div class="question">
+                        <div class="questionMeta">
+                            <h3><%= question.category %></h3>
+                            <p><% fd = question.fixture_date %>
+                                <%= fd.strftime('%A, %d %B %Y - %H:%M:%S') %>
+
+                            </p>
+                        </div>
+                        <div class="questionText">
+                            <p><%= question.question_text %></p>
+                        </div>
+                        <div class="time">
+                            <p>
+                                <%= report %>
+                            </p>
+                        </div>
+                        <p><%= question.answers.count %> total answers.</p>
+                        <br>
+                        <% if question.answers.exists?(:user_id => current_user.id, :question_id => question.id) %>
+                            <div class="votedFor fifper"><i class="fa fa-check fa-1x"></i> Voted</div>
+                            <div><%= link_to 'View Results', question, :class => 'voteNow fifper' %></div>
+                        <% else %>
+                            <%= link_to 'Vote Now', question, :class => 'voteNow' %>
+                        <% end %>
+
+                        <% if current_user.try(:admin?) %>
+                            <div class="adminButtons">
+                                <%= link_to 'Show', question %>
+                                 • <%= link_to 'Edit', edit_question_path(question) %> • 
+                                <%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+        
+        <% @questions.where(category: 'Politics').where('fixture_date > ?', DateTime.now - 2.hours).order("fixture_date asc").in_groups_of(3, false).each do |group| %>
+            <div id="politics" class="row">
                 <% group.each do |question| %>
                     <% Time.zone = 'GMT'
 
