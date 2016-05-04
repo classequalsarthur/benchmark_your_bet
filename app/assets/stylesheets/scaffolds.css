@@ -508,47 +508,54 @@ a {
   #content {
     float: left;
     width: 90%;
-    padding: 0 5%; } }
+    padding: 0 5%; }
+  /* line 569, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  #category-wrapper {
+    width: 100% !important;
+    margin: 10px 0 30px !important; } }
 
 @media (max-width: 768px) {
-  /* line 571, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 575, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .title {
     width: 100% !important;
     margin-bottom: 0; }
-  /* line 575, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 579, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .headerMessage {
     width: 100% !important; }
-  /* line 578, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 582, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   h1 {
     font-size: 34px; }
-  /* line 581, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 585, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .option {
     width: 96% !important;
     margin: 0 !important;
-    margin-bottom: 20px !important; } }
+    margin-bottom: 20px !important; }
+  /* line 592, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  #category-wrapper li {
+    width: 100% !important; } }
 
 @media (max-width: 667px) {
-  /* line 588, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 598, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   #left {
     width: 90%;
     padding: 10px 5%; }
-  /* line 592, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 602, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .question {
     width: 90% !important;
     margin: 0 !important;
     padding: 0 5% 5% !important;
     margin-bottom: 20px !important; }
-  /* line 598, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 608, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .one {
     width: 90%;
     padding: 20px 5%;
     margin: 0%; }
-  /* line 603, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 613, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .two {
     width: 90%;
     padding: 20px 5%;
     margin: 0%; }
-  /* line 608, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 618, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   #home-page-img {
     position: relative;
     float: left;
@@ -558,11 +565,11 @@ a {
     margin-bottom: -100px; } }
 
 @media (max-width: 800px) {
-  /* line 618, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 628, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   #nav-trigger {
     display: block !important;
     cursor: pointer; }
-  /* line 622, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 632, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .nav {
     display: none;
     position: fixed;
@@ -572,7 +579,7 @@ a {
     right: 0;
     z-index: 999999999;
     background: #98353f !important; }
-    /* line 632, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+    /* line 642, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
     .nav #nav-back {
       display: block;
       position: fixed;
@@ -581,7 +588,7 @@ a {
       cursor: pointer;
       z-index: 9999999999;
       font-size: 14px; }
-    /* line 642, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+    /* line 652, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
     .nav li {
       display: block;
       padding: 0 !important;
@@ -589,83 +596,83 @@ a {
       width: 100% !important; } }
 
 @media (max-width: 480px) {
-  /* line 651, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 661, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   #left {
     text-align: center; }
-    /* line 654, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+    /* line 664, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
     #left #nav-trigger {
       float: none; }
-    /* line 657, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+    /* line 667, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
     #left img {
       max-width: 40%;
       margin: 0 30%; }
-    /* line 661, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+    /* line 671, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
     #left #user-greeting {
       width: 100%;
       text-align: center; }
-    /* line 665, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+    /* line 675, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
     #left .headerWrap {
       width: 100%; }
-  /* line 669, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 679, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   #options-wrapper, #options-info-wrapper {
     width: 100% !important; } }
 
 /* 4.0 MISC */
-/* line 674, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 684, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 .textBold {
   font-family: "montserratbold"; }
 
-/* line 677, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 687, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 .textWhite {
   color: #ffffff; }
 
-/* line 680, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 690, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 .linkWhite {
   color: #98353f !important;
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s; }
-  /* line 686, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 696, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .linkWhite:hover {
     color: #74ae5c !important; }
 
-/* line 690, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 700, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 .linkGreen {
   color: #ffffff; }
-  /* line 692, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 702, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   .linkGreen:hover {
     color: #98353f; }
 
-/* line 696, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 706, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 .textCenter {
   text-align: center; }
 
-/* line 699, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 709, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 .vaM {
   vertical-align: middle; }
 
-/* line 704, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 714, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 div.field, div.actions {
   margin-bottom: 10px; }
 
-/* line 709, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 719, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 #notice {
   color: green; }
 
-/* line 713, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 723, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: inherit; }
 
-/* line 719, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 729, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 #error_explanation {
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0; }
-  /* line 726, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 736, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   #error_explanation h2 {
     text-align: left;
     font-weight: bold;
@@ -675,12 +682,12 @@ div.field, div.actions {
     margin-bottom: 0px;
     background-color: #c00;
     color: #fff; }
-  /* line 737, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 747, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   #error_explanation ul li {
     font-size: 12px;
     list-style: square; }
 
-/* line 744, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 754, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 #admin-panel {
   float: left;
   width: 90%;
@@ -688,11 +695,11 @@ div.field, div.actions {
   padding: 10px 5%;
   margin: 50px 0;
   clear: both; }
-  /* line 752, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+  /* line 762, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
   #admin-panel a {
     color: white; }
 
-/* line 757, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
+/* line 767, /Users/arthurrigley/Documents/Projects/ruby-on-rails/bet/app/assets/stylesheets/scaffolds.scss */
 .adminButtons {
   position: absolute;
   top: -15px;
