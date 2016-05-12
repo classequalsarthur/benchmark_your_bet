@@ -507,7 +507,9 @@ a{
     color: $greenLight;
     }
 }
-
+video{
+    width: 100%;
+}
 /* 3.0 MEDIA QUERIES */
 @media (max-width: $breakpoint-main-structure) {
     #left{

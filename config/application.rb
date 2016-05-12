@@ -24,6 +24,6 @@ module Bet
         config.active_record.raise_in_transactional_callbacks = true
 
         # add app/assets/fonts to the asset path
-        config.assets.paths << Rails.root.join("app", "assets", "fonts")
+        config.assets.paths << Rails.root.join("app", "assets", "fonts", "video")
     end
 end
